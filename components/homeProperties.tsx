@@ -5,8 +5,9 @@ import { Property } from "../types/property";
 
 const HomePageProperties = async () => {
   const data = await fetchProperties();
-  const recentProperties = data.properties
-    .sort(() => new Date().getTime() - new Date().getTime())
+  const properties = Array.isArray(data) ? data : data.properties || [];
+  const recentProperties = properties
+    .sort(() => Math.random() - 0.5)
     .slice(0, 3);
   return (
     <>
