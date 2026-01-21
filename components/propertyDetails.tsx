@@ -1,11 +1,11 @@
 import { Property } from "../types/property";
 import {
   FaBed,
-  FaBath,
   FaRulerCombined,
   FaTimes,
   FaCheck,
   FaMapMarker,
+  FaMoneyBill,
 } from "react-icons/fa";
 import PropertyMap from "./propertyMap";
 
@@ -74,16 +74,16 @@ const PropertyDetails = ({ property }: { property: Property }) => {
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
         <div className="flex justify-center gap-4 text-blue-500 mb-4 text-xl space-x-9">
           <p>
-            <FaBed className="inline-block mr-2" /> {property.beds}{" "}
-            <span className="hidden sm:inline">Beds</span>
+            <FaBed className="inline-block mr-2" /> {property.plots}{" "}
+            <span className="hidden sm:inline">plots</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths}{" "}
-            <span className="hidden sm:inline">Baths</span>
+            <FaMoneyBill className="inline-block mr-2" /> {property.price}{" "}
+            <span className="hidden sm:inline">price</span>
           </p>
           <p>
             <FaRulerCombined className="inline-block mr-2" />
-            {property.square_feet}{" "}
+            {property.square_meter}{" "}
             <span className="hidden sm:inline">sqft</span>
           </p>
         </div>
