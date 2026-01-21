@@ -7,11 +7,8 @@ const HomePageProperties = async () => {
   const data = await fetchProperties();
   console.log("HomePageProperties data:", data);
   const properties = Array.isArray(data) ? data : data?.properties || [];
-  console.log("HomePageProperties properties:", properties);
-  const recentProperties =
-    properties.length > 0
-      ? properties.sort(() => Math.random() - 0.5).slice(0, 3)
-      : [];
+  //console.log("HomePageProperties properties:", properties);
+
   return (
     <>
       <section className="px-4 py-6">
@@ -20,12 +17,12 @@ const HomePageProperties = async () => {
             Recent Properties
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {recentProperties.length === 0 ? (
+            {properties.length === 0 ? (
               <h1 className="mx-auto items-center">
                 No recent properties Found
               </h1>
             ) : (
-              recentProperties.map((property: Property) => (
+              properties.map((property: Property) => (
                 <div key={property._id}>
                   <PropertyCard property={property} />
                 </div>

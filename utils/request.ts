@@ -1,17 +1,21 @@
-const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN;
-
-const getApiUrl = (path: string) => {
-  if (typeof window === "undefined") {
-    // Server-side: use relative path
-    return `/api${path}`;
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") {
+    // Browser
+    return "";
   }
-  // Client-side: use API domain if available
-  return apiDomain ? `${apiDomain}${path}` : `/api${path}`;
+
+  // Server
+  return (
+    process.env.NEXT_PUBLIC_DOMAIN ||
+    process.env.NEXTAUTH_URL ||
+    "http://localhost:3000"
+  );
 };
 
 export const fetchProperties = async ({ showFeatured = false } = {}) => {
   try {
-    const url = getApiUrl(`/properties${showFeatured ? "/featured" : ""}`);
+    const baseUrl = getBaseUrl();
+    const url = `${baseUrl}/api/properties${showFeatured ? "/featured" : ""}`;
     const res = await fetch(url, {
       cache: "no-store",
       next: { revalidate: 0 },
@@ -30,7 +34,8 @@ export const fetchProperties = async ({ showFeatured = false } = {}) => {
 
 export const fetchProperty = async ({ id }: { id: string }) => {
   try {
-    const url = getApiUrl(`/properties/${id}`);
+    const baseUrl = getBaseUrl();
+    const url = `${baseUrl}/api/properties/${id}`;
     const res = await fetch(url);
     if (!res.ok) {
       throw new Error("Failed to fetch properties");
