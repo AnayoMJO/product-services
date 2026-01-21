@@ -5,10 +5,13 @@ import { Property } from "../types/property";
 
 const HomePageProperties = async () => {
   const data = await fetchProperties();
-  const properties = Array.isArray(data) ? data : data.properties || [];
-  const recentProperties = properties
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+  console.log("HomePageProperties data:", data);
+  const properties = Array.isArray(data) ? data : data?.properties || [];
+  console.log("HomePageProperties properties:", properties);
+  const recentProperties =
+    properties.length > 0
+      ? properties.sort(() => Math.random() - 0.5).slice(0, 3)
+      : [];
   return (
     <>
       <section className="px-4 py-6">
