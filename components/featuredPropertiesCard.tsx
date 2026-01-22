@@ -69,7 +69,7 @@ const FeaturedPropertiesCard = ({ property }: { property: Property }) => {
 
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <FaMapMarker className="inline-block mr-2" />
+            <FaMapMarker className="inline-block mr-2 mt-1 text-orange-700" />
             <span className="text-orange-700">
               {property.location.city} {property.location.state}{" "}
             </span>
