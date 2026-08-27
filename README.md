@@ -25,3 +25,13 @@ A high-performance, responsive real estate web application built using the Next.
 * `/context` - Global state management providers
 * `/utils` - Helper functions and API handlers
 
+## 📸 Screenshots
+
+### 🏠 Homepage — Hero & Search
+![Homepage](./screenshots/homepage.png)
+
+### 🏘️ Recent Properties Listing
+![Properties](./screenshots/properties.png)
+
+### 📍 Property Detail — Amenities & Map
+![Property Detail](./screenshots/property-detail.png)
